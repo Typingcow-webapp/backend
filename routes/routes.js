@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
+const UserModel = require("../model/model");
 
 const router = express.Router();
 
@@ -40,7 +41,6 @@ router.post("/login", async (req, res, next) => {
 
 router.get("/logout", (req, res, next) => {
   req.logout();
-  // res.redirect("http://127.0.0.1:5500/client/index.html");
 });
 
 module.exports = router;

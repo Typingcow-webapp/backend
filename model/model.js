@@ -41,6 +41,96 @@ const UserSchema = new Schema({
       // },
     },
   ],
+  pb: [
+    {
+      timer: {
+        type: String,
+        required: true,
+      },
+      wpm: {
+        type: String,
+        required: true,
+      },
+
+      cpm: {
+        type: String,
+        required: true,
+      },
+
+      acc: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
+  // personalBest: [
+  //   {
+  //     fifteenSecs: {
+  //       wpm: {
+  //         type: String,
+  //         required: true,
+  //       },
+
+  //       cpm: {
+  //         type: String,
+  //         required: true,
+  //       },
+
+  //       acc: {
+  //         type: String,
+  //         required: true,
+  //       },
+  //     },
+  //     thirtySecs: {
+  //       wpm: {
+  //         type: String,
+  //         required: true,
+  //       },
+
+  //       cpm: {
+  //         type: String,
+  //         required: true,
+  //       },
+
+  //       acc: {
+  //         type: String,
+  //         required: true,
+  //       },
+  //     },
+  //     sixtySecs: {
+  //       wpm: {
+  //         type: String,
+  //         required: true,
+  //       },
+
+  //       cpm: {
+  //         type: String,
+  //         required: true,
+  //       },
+
+  //       acc: {
+  //         type: String,
+  //         required: true,
+  //       },
+  //     },
+  //     twoMins: {
+  //       wpm: {
+  //         type: String,
+  //         required: true,
+  //       },
+
+  //       cpm: {
+  //         type: String,
+  //         required: true,
+  //       },
+
+  //       acc: {
+  //         type: String,
+  //         required: true,
+  //       },
+  //     },
+  //   },
+  // ],
 });
 
 UserSchema.pre("save", async function (next) {
