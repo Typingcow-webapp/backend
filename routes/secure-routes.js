@@ -72,4 +72,8 @@ router.delete("/pb", async (req, res) => {
   res.json(user.pb);
 });
 
+router.get("/leaderboard", async (req, res) => {
+  return res.json(await UserModel.find({}));
+});
+
 module.exports = router;
