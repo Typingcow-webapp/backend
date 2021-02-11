@@ -21,15 +21,14 @@ const secureRoute = require("./routes/secure-routes");
 
 const app = express();
 const http = require("http").createServer(app);
-const io = require("socket.io").listen(http);
-// const io = require("socket.io")(http, {
-//   cors: {
-//     origin: "https://example.com",
-//     methods: ["GET", "POST"],
-//     allowedHeaders: ["Access-Control-Allow-Origin"],
-//     credentials: true,
-//   },
-// });
+// const io = require("socket.io").listen(http);
+const io = require("socket.io")(http, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
 
 let players = {};
 let results = {};
@@ -138,7 +137,7 @@ io.on("connection", (socket) => {
   function makeId(length) {
     let result = "";
     const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*()_+=-";
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()_+=-";
     const charactersLength = characters.length;
 
     for (let i = 0; i < length; i++) {
