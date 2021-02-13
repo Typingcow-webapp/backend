@@ -1,7 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const uuid = require("uuid");
-const bcrypt = require("bcrypt");
 const UserModel = require("../model/model");
 
 router.get("/profile", (req, res, next) => {
@@ -17,9 +15,7 @@ router.post("/result", async (req, res, next) => {
         results: {
           wpm: req.body.wpm,
           cpm: req.body.cpm,
-          acc: req.body.acc,
           timer: req.body.timer,
-          // uuid: uuid.v1(),
         },
       },
     }),
@@ -46,25 +42,18 @@ router.post("/pb", async (req, res) => {
         timer: req.body.timer,
         wpm: req.body.wpm,
         cpm: req.body.cpm,
-        acc: req.body.acc,
       },
     },
   });
 });
 
 router.delete("/pb", async (req, res) => {
-  // TODO
-  // Find user
-  // Get correct pb (corresponding time: req.body.timer)
-  // Delete it
-
   const user = await UserModel.findByIdAndUpdate(req.user._id, {
     $pull: {
       pb: {
         timer: req.body.timer,
         wpm: req.body.wpm,
         cpm: req.body.cpm,
-        acc: req.body.acc,
       },
     },
   });
