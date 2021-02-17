@@ -8,6 +8,7 @@ const UserSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+    lowercase: true,
   },
   password: {
     type: String,
@@ -34,11 +35,6 @@ const UserSchema = new Schema({
         type: String,
         required: true,
       },
-
-      // uuid: {
-      //   type: String,
-      //   required: true,
-      // },
     },
   ],
   pb: [
@@ -63,74 +59,6 @@ const UserSchema = new Schema({
       },
     },
   ],
-  // personalBest: [
-  //   {
-  //     fifteenSecs: {
-  //       wpm: {
-  //         type: String,
-  //         required: true,
-  //       },
-
-  //       cpm: {
-  //         type: String,
-  //         required: true,
-  //       },
-
-  //       acc: {
-  //         type: String,
-  //         required: true,
-  //       },
-  //     },
-  //     thirtySecs: {
-  //       wpm: {
-  //         type: String,
-  //         required: true,
-  //       },
-
-  //       cpm: {
-  //         type: String,
-  //         required: true,
-  //       },
-
-  //       acc: {
-  //         type: String,
-  //         required: true,
-  //       },
-  //     },
-  //     sixtySecs: {
-  //       wpm: {
-  //         type: String,
-  //         required: true,
-  //       },
-
-  //       cpm: {
-  //         type: String,
-  //         required: true,
-  //       },
-
-  //       acc: {
-  //         type: String,
-  //         required: true,
-  //       },
-  //     },
-  //     twoMins: {
-  //       wpm: {
-  //         type: String,
-  //         required: true,
-  //       },
-
-  //       cpm: {
-  //         type: String,
-  //         required: true,
-  //       },
-
-  //       acc: {
-  //         type: String,
-  //         required: true,
-  //       },
-  //     },
-  //   },
-  // ],
 });
 
 UserSchema.pre("save", async function (next) {
