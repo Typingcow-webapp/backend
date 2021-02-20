@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const UserModel = require("../model/model");
+const bcrypt = require("bcrypt");
 
 router.get("/profile", (req, res, next) => {
   res.json({
@@ -63,6 +64,16 @@ router.delete("/pb", async (req, res) => {
 
 router.get("/leaderboard", async (req, res) => {
   return res.json(await UserModel.find({}));
+});
+
+router.post("/resetpass", async (req, res) => {
+  const hash = await bcrypt.hash(req.body.newpass, 10);
+
+  await UserModel.findByIdAndUpdate(req.user._id, {
+    password: hash,
+  });
+
+  return res.status(205);
 });
 
 module.exports = router;
